@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:hyrule_compendium_app/constants.dart';
 
 class Materiall {

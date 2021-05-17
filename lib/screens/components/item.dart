@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:hyrule_compendium_app/functions.dart';
+import 'package:hyrule_compendium_app/screens/category_screens/item_detail_screen.dart';
 
 import '../../constants.dart';
+import 'item_type_text.dart';
 
 class Item extends StatelessWidget {
   final item;
 
   Item(this.item);
 
+  void _selectItem(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(ItemDetailScreen.routeName, arguments: item);
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => _selectItem(context),
       splashColor: Theme.of(context).accentColor,
       child: Padding(
         padding: EdgeInsets.all(kDefaultPadding),
@@ -21,19 +28,26 @@ class Item extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: kDefaultPadding),
             child: ListTile(
-              title: Text(getCapitalizedString(item.name)),
-              subtitle: Text(item.description),
+              title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      getCapitalizedString(item.name),
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    item.category == ItemCategory.EQUIPMENT ||
+                            item.category == ItemCategory.CREATURES
+                        ? ItemTypeText(item)
+                        : Text("")
+                  ]),
+              subtitle: Text(
+                item.description,
+                textAlign: TextAlign.justify,
+              ),
             ),
           ),
         ),
       ),
     );
-  }
-
-  String getCapitalizedString(String str) {
-    if (str.length <= 1) {
-      return str.toUpperCase();
-    }
-    return "${str[0].toUpperCase()}${str.substring(1)}";
   }
 }

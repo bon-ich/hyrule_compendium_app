@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hyrule_compendium_app/screens/category_screens/item_detail_screen.dart';
 
 import './screens/category_screens/category_equipment_screen.dart';
 import './screens/category_screens/category_materials_screen.dart';
@@ -32,7 +33,16 @@ class MyApp extends StatelessWidget {
         CreaturesCategoryScreen.routeName: (ctx) => CreaturesCategoryScreen(),
         EquipmentCategoryScreen.routeName: (ctx) => EquipmentCategoryScreen(),
         MaterialsCategoryScreen.routeName: (ctx) => MaterialsCategoryScreen(),
-        MonstersCategoryScreen.routeName: (ctx) => MonstersCategoryScreen()
+        MonstersCategoryScreen.routeName: (ctx) => MonstersCategoryScreen(),
+        // ItemDetailScreen.routeName: (ctx) => ItemDetailScreen()
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == ItemDetailScreen.routeName) {
+          final args = settings.arguments;
+          return MaterialPageRoute(builder: (context) {
+            return ItemDetailScreen(args);
+          });
+        }
       },
     );
   }

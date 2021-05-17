@@ -27,8 +27,8 @@ class _EquipmentCategoryScreenState extends State<EquipmentCategoryScreen> {
       for (var d in dataJson) {
         equipment.add(Equipment.fromJson(d));
       }
-      return equipment;
     }
+    return equipment;
   }
 
   @override

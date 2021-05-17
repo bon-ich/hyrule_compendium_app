@@ -2,9 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import '../../constants.dart';
 import '../components/item.dart';
-
 import '../../models/monster.dart';
 
 class MonstersCategoryScreen extends StatefulWidget {
@@ -28,8 +26,8 @@ class _MonstersCategoryScreenState extends State<MonstersCategoryScreen> {
       for (var d in dataJson) {
         monsters.add(Monster.fromJson(d));
       }
-      return monsters;
     }
+    return monsters;
   }
 
   @override

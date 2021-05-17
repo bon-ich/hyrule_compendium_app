@@ -21,6 +21,10 @@ class Equipment {
     this.commonLocations,
   });
 
+  bool get isWeapon {
+    return attack != 0 && defence == 0 ? true : false;
+  }
+
   factory Equipment.fromJson(Map<String, dynamic> json) {
     return Equipment(
         id: json["id"],

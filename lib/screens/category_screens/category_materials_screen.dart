@@ -28,8 +28,8 @@ class _MaterialsCategoryScreenState extends State<MaterialsCategoryScreen> {
       for (var d in dataJson) {
         materials.add(Materiall.fromJson(d));
       }
-      return materials;
     }
+    return materials;
   }
 
   @override
